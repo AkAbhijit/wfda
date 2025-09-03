@@ -1,5 +1,10 @@
 import React from "react";
+import HOCS from "./components/HOCS";
 
 export default function App() {
-  return <div>App</div>;
+  return (
+    <div>
+      <HOCS />
+    </div>
+  );
 }
