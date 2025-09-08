@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 
-const STANDS = ["VIP", "FanPit", "General"];
 
 export default function Stage() {
   const [price, setPrice] = useState(null);
+  const STANDS = ["VIP", "FanPit", "General"];
 
   // H/w todo arrange the semicolonm properly
-  //   if (price === 1999) return <Stands title="General" />;
-  //   else return <Stands title="Fanpit" />;
+  // if (price === 1999) { return <Stands title="General" />; }
+  // else { <Stands title="Fanpit" />; }
 
   return (
     <div>
@@ -15,14 +15,14 @@ export default function Stage() {
         {/* areas heere */}
         {/* {} */}
 
-        {price === 1999 ? (
-          <Stands title="General" />
-        ) : (
-          //   STANDS.map((s) => {
-          //     return <Stage title={s} />;
-          //   })
-          <></>
-        )}
+        {STANDS.map((stand) => (
+          <>
+            {price === 1999 && stand === "General" ? (<Stands title={stand} />) : null}
+            {price === 2499 && stand === "FanPit" ? (<Stands title={stand} />) : null}
+            {price === 3499 && stand === "VIP" ? (<Stands title={stand} />) : null}
+            {price === null ? (<Stands title={stand} />) : null}
+          </>
+        ))}
 
         <h3>Stands</h3>
       </div>
@@ -33,7 +33,8 @@ export default function Stage() {
         <StandPriceBtn price={1999} setPrice={setPrice} />
         <StandPriceBtn price={2499} setPrice={setPrice} />
         {/* h/w */}
-        <StandPriceBtn price={3499} />
+        <StandPriceBtn price={3499} setPrice={setPrice} />
+        <button style={{ marginLeft: "10px", height: "20px" }} onClick={() => setPrice(null)}>Reset</button>
       </div>
     </div>
   );
